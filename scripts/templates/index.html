@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GHG Emissions Visualization</title>
+</head>
+<body>
+    <h1>GHG Emissions Visualization</h1>
+
+    <!-- Filter Form -->
+    <form method="POST">
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+            <option value="all">All</option>
+            {% for country in countries %}
+                <option value="{{ country }}" {% if country == selected_country %}selected{% endif %}>{{ country }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="sector">Sector:</label>
+        <select id="sector" name="sector">
+            <option value="all">All</option>
+            {% for sector in sectors %}
+                <option value="{{ sector }}" {% if sector == selected_sector %}selected{% endif %}>{{ sector }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="gas">Gas:</label>
+        <select id="gas" name="gas">
+            <option value="all">All</option>
+            {% for gas in gases %}
+                <option value="{{ gas }}" {% if gas == selected_gas %}selected{% endif %}>{{ gas }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Filter</button>
+    </form>
+
+    <!-- Chart -->
+    <h2>Chart</h2>
+    {% if chart_url %}
+        <img src="data:image/png;base64,{{ chart_url }}" alt="Emissions Chart">
+    {% else %}
+        <p>No data available for the selected filters.</p>
+    {% endif %}
+</body>
+</html>
