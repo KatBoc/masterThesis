@@ -1,0 +1,7 @@
+{
+  'data_dir' : 'data',
+  'files' : {
+    'wroclaw' : 'WroclawData.xlsx',
+    'world' : 'CW_HistoricalEmissions_ClimateWatch.csv'
+  }
+}
