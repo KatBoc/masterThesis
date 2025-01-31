@@ -1,6 +1,6 @@
 import re
-
 import pandas as pd
+
 
 def transform_wroclaw_data(df):
     df = _transform_data(df)
@@ -8,15 +8,15 @@ def transform_wroclaw_data(df):
     return df
 
 
-def transform_word_data(df):
-    df = _transform_data(df)
+def transform_world_data(df):
+    # df = _transform_data(df)
     return df
 
 
 def _transform_data(df):
     df = _convert_column_names_to_snake_case(df)
     df = _trim_values(df)
-    df = _drop_if_empty(df)
+    # df = _drop_if_empty(df)
     df = _parse_to_valid_types(df)
     df = _lowercase_columns_values(df)
     return df
@@ -60,7 +60,8 @@ def _trim_values(df):
 
 def _parse_to_valid_types(df):
     datetime_columns = ['year']
-    numeric_columns = [col for col in df.columns if col not in ['year', 'sector', 'subsector']]
+    numeric_columns = [col for col in df.columns if
+                       col not in ['year', 'sector', 'subsector']]
 
     for col in datetime_columns:
         if col in df.columns:
@@ -69,9 +70,11 @@ def _parse_to_valid_types(df):
     for col in numeric_columns:
         if col in df.columns:
             if df[col].dtype == 'object':
-                df[col] = df[col].str.replace(" ", "").astype(float, errors='coerce')
+                df[col] = df[col].str.replace(" ", "").astype(float,
+                                                              errors='coerce')
 
     return df
+
 
 def _add_location(df):
     df['country'] = 'Poland'

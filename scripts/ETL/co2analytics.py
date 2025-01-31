@@ -25,22 +25,23 @@ class CO2Analytics:
 
     def run(self):
         self.wroclaw_data, self.world_data = self._get_data()
-        self.transformed_wroclaw_data, self.transformed_world_data = self._get_transformed_data()
+        self.transformed_wroclaw_data, self.transformed_world_data \
+            = self._get_transformed_data()
 
 
     def _get_data(self):
         if self.wroclaw_data is None:
             file_path = self._data_dir.joinpath(self._config['files']['wroclaw'])
-            self.data = extract_data_xlsx(file_path)
+            self.wroclaw_data = extract_data_xlsx(file_path)
         if self.world_data is None:
             file_path = self._data_dir.joinpath(self._config['files']['world'])
-            self.data = extract_data_csv(file_path)
-        return self.data
+            self.world_data = extract_data_csv(file_path)
+        return self.wroclaw_data, self.world_data
 
 
     def _get_transformed_data(self):
         if self.transformed_wroclaw_data is None:
-            self.transformed_wroclaw_data = transform_wroclaw_data(self.data)
+            self.transformed_wroclaw_data = transform_wroclaw_data(self.wroclaw_data)
         if self.transformed_world_data is None:
-            self.transformed_world_data = transform_wroclaw_data(self.data)
+            self.transformed_world_data = transform_world_data(self.world_data)
         return self.transformed_wroclaw_data, self.transformed_world_data
