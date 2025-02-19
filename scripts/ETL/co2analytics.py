@@ -4,7 +4,7 @@ from scripts.ETL.extraction_utils import extract_data_xlsx, extract_data_csv
 import os
 from pathlib import Path
 from scripts.ETL.plots import plot, print_head
-from scripts.ETL.transformation_utils import transform_wroclaw_data, transform_word_data
+from scripts.ETL.transformation_utils import transform_wroclaw_data, transform_world_data
 
 
 class CO2Analytics:
