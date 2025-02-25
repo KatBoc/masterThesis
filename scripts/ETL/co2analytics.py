@@ -18,10 +18,15 @@ class CO2Analytics:
         with self._main_dir.joinpath(self._config_file).open() as f:
             self._config = json.load(f)
         self._data_dir = self._main_dir.joinpath(self._config['data_dir'])
+        self.plot_config = self._config.get('plots_configuration')
         self.wroclaw_data = None
         self.world_data = None
         self.transformed_wroclaw_data = None
         self.transformed_world_data = None
+
+    @property
+    def config(self):
+        return self._config
 
     def run(self):
         self.wroclaw_data, self.world_data = self._get_data()

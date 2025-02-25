@@ -47,8 +47,8 @@ def transform_world_data(df):
 def _melt_world_columns(df):
     df = df.melt(
         id_vars=['Country', 'Source', 'Sector', 'Gas'],
-        var_name='Year',
-        value_name='Emission')
+        var_name='year',
+        value_name='emission')
     return df
 
 def _melt_wroclaw_columns(df):

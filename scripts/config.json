@@ -3,5 +3,21 @@
   "files" : {
     "wroclaw" : "WroclawData.xlsx",
     "world" : "CW_HistoricalEmissions_ClimateWatch.csv"
+  },
+  "plots_configuration": {
+    "background": {
+      "local" : "(228, 228, 228, 1)",
+      "online" : "(0,0,0,0)"
+    },
+    "colours": ["(123, 233, 154, 1)", "(123, 147, 233, 1)", "(233, 123, 202, 1)", "(233, 209, 123, 1)"],
+    "font" : {
+      "colour" : "(0, 0, 0, 1)",
+      "style" : "",
+      "size": {
+        "title": 2,
+        "axis": 2
+      }
+    }
   }
 }
+
